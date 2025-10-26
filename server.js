@@ -76,10 +76,14 @@ app.use((err, req, res, next) => {
 
 // 404 handler
 app.use((req, res) => {
-  res.status(404).json({ message: 'Route not found' });
+  res.status(200).json({ message: 'Your API is Working' });
+});
+app.use('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'dist','index.html'));
 });
 
 const PORT = process.env.PORT || 5001;
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
